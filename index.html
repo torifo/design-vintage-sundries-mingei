@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>土と糸 — TSUCHI to ITO｜民藝の古道具と仕事</title>
+  <meta name="description" content="柳宗悦の説いた「用の美」を、いまの暮らしに。土物の器、藍染、木工。古民家に佇む民藝の古道具店。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;700;800&family=Noto+Serif+JP:wght@300;400;500;700&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ai:#1d3a5f;            /* 紺藍 */
+      --ai-fukai:#0f2238;       /* 深藍 */
+      --sabi:#7a4a2d;           /* 鉄錆 */
+      --sabi-asa:#a86b48;       /* 浅い錆 */
+      --kinari:#f3ecdc;         /* 生成り */
+      --washi:#ece2cf;          /* 和紙 */
+      --sumi:#1a1714;           /* 墨 */
+      --kusa:#5a6b3e;           /* 草 */
+      --shu:#a8412c;            /* 朱 */
+      --hai:#928a7c;            /* 灰 */
+      --font-mei:'Shippori Mincho B1','Noto Serif JP',serif;
+      --font-honbun:'Noto Serif JP',serif;
+      --font-kana:'Sawarabi Mincho','Noto Serif JP',serif;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--kinari);
+      color:var(--sumi);
+      font-family:var(--font-honbun);
+      font-weight:400;
+      line-height:1.85;
+      overflow-x:hidden;
+      letter-spacing:.04em;
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(122,74,45,.06), transparent 45%),
+        radial-gradient(ellipse at 90% 80%, rgba(29,58,95,.05), transparent 50%);
+    }
+    /* 和紙テクスチャ */
+    body::before{
+      content:"";
+      position:fixed;inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.42  0 0 0 0 0.32  0 0 0 0 0.18  0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      opacity:.55;
+      mix-blend-mode:multiply;
+      z-index:1;
+    }
+    main,header,footer,section{position:relative;z-index:2}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* ─── ヘッダー ─── */
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      padding:1.8rem clamp(1.2rem,4vw,3rem) 1.2rem;
+      border-bottom:1px solid rgba(26,23,20,.12);
+    }
+    .brand{
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:clamp(1.2rem,2vw,1.55rem);
+      letter-spacing:.18em;
+      line-height:1.1;
+    }
+    .brand small{
+      display:block;
+      font-size:.55em;
+      letter-spacing:.3em;
+      color:var(--sabi);
+      margin-top:.4em;
+      font-weight:400;
+    }
+    nav ul{list-style:none;display:flex;gap:clamp(1rem,2.5vw,2rem);font-family:var(--font-mei);font-size:.85rem;letter-spacing:.25em}
+    nav a{position:relative;padding-bottom:.3em;color:var(--sumi)}
+    nav a::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+      background:var(--sumi);transform:scaleX(0);transform-origin:right;transition:transform .5s ease;
+    }
+    nav a:hover::after{transform:scaleX(1);transform-origin:left}
+
+    /* ─── ヒーロー ─── */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:clamp(2rem,5vw,4rem);
+      padding:clamp(3rem,8vw,7rem) clamp(1.2rem,4vw,3rem) clamp(4rem,9vw,6rem);
+      position:relative;
+    }
+    @media(min-width:880px){
+      .hero{grid-template-columns:minmax(260px,.42fr) 1fr;align-items:end}
+    }
+    .hero-tate{
+      writing-mode:vertical-rl;
+      font-family:var(--font-mei);
+      font-weight:500;
+      font-size:clamp(1.6rem,3vw,2.2rem);
+      line-height:2.1;
+      letter-spacing:.5em;
+      color:var(--ai-fukai);
+      margin-left:auto;
+      max-height:clamp(280px,40vw,460px);
+      position:relative;
+    }
+    .hero-tate span{display:block}
+    .hero-tate .mark{
+      color:var(--shu);
+      font-weight:700;
+    }
+    .hero-tate::before{
+      content:"";
+      position:absolute;
+      top:-.5em;right:-1.2em;
+      width:.6em;height:.6em;
+      background:var(--shu);
+      border-radius:2px;
+      transform:rotate(45deg);
+    }
+    .hero-body h1{
+      font-family:var(--font-mei);
+      font-weight:800;
+      font-size:clamp(2.4rem,7vw,5.2rem);
+      line-height:1.15;
+      letter-spacing:.04em;
+      margin-bottom:clamp(1.5rem,3vw,2.5rem);
+      color:var(--sumi);
+    }
+    .hero-body h1 .accent{
+      display:inline-block;
+      background:linear-gradient(transparent 70%, rgba(29,58,95,.18) 70%);
+      padding:0 .1em;
+    }
+    .hero-body h1 .small-en{
+      display:block;
+      font-family:var(--font-mei);
+      font-size:.22em;
+      letter-spacing:.45em;
+      color:var(--sabi);
+      font-weight:500;
+      margin-top:1.5em;
+    }
+    .hero-body p{
+      font-size:clamp(.95rem,1.4vw,1.05rem);
+      max-width:46em;
+      color:var(--sumi);
+      opacity:.85;
+    }
+    .hero-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:1rem 2rem;
+      margin-top:clamp(2rem,4vw,3rem);
+      padding-top:1.5rem;
+      border-top:1px solid rgba(26,23,20,.18);
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.22em;
+      color:var(--hai);
+    }
+    .hero-meta b{color:var(--ai-fukai);font-weight:500;letter-spacing:.15em;margin-left:.6em}
+
+    /* ─── 章見出し共通 ─── */
+    .shou{
+      display:flex;
+      align-items:baseline;
+      gap:1.5rem;
+      padding:clamp(3rem,6vw,5rem) clamp(1.2rem,4vw,3rem) clamp(1.5rem,3vw,2.5rem);
+      border-top:1px solid rgba(26,23,20,.14);
+    }
+    @media(max-width:600px){
+      .shou{flex-direction:column;align-items:flex-start;gap:.6rem}
+    }
+    .shou .no{
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:clamp(2rem,4vw,3rem);
+      color:var(--shu);
+      line-height:1;
+      white-space:nowrap;
+    }
+    .shou .no::after{
+      content:"";display:inline-block;width:1.6em;height:1px;background:var(--sabi);margin:0 .6em .25em;vertical-align:middle;
+    }
+    .shou h2{
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:clamp(1.6rem,3vw,2.4rem);
+      letter-spacing:.15em;
+      line-height:1.3;
+    }
+    .shou h2 small{
+      display:block;
+      font-size:.4em;
+      letter-spacing:.35em;
+      color:var(--sabi);
+      font-weight:500;
+      margin-top:.8em;
+    }
+
+    /* ─── 引用ブロック（柳宗悦） ─── */
+    .quote{
+      padding:clamp(3rem,6vw,5rem) clamp(1.2rem,4vw,3rem);
+      background:
+        linear-gradient(rgba(29,58,95,.04),rgba(29,58,95,.04)),
+        radial-gradient(circle at 30% 40%, rgba(122,74,45,.08), transparent 60%);
+      border-top:1px solid rgba(26,23,20,.14);
+      border-bottom:1px solid rgba(26,23,20,.14);
+      text-align:center;
+    }
+    .quote blockquote{
+      font-family:var(--font-mei);
+      font-weight:400;
+      font-size:clamp(1.15rem,2.2vw,1.7rem);
+      line-height:2.4;
+      letter-spacing:.2em;
+      color:var(--ai-fukai);
+      max-width:32em;
+      margin:0 auto;
+      position:relative;
+    }
+    .quote blockquote::before,
+    .quote blockquote::after{
+      font-family:var(--font-mei);
+      color:var(--shu);
+      opacity:.6;
+    }
+    .quote blockquote::before{content:"「";position:absolute;left:-.6em;top:-.3em}
+    .quote blockquote::after{content:"」";margin-left:.1em}
+    .quote cite{
+      display:block;
+      font-style:normal;
+      margin-top:2rem;
+      font-family:var(--font-mei);
+      font-size:.85rem;
+      letter-spacing:.4em;
+      color:var(--sabi);
+    }
+    .quote cite::before{content:"——  ";color:var(--hai)}
+
+    /* ─── 道具棚（商品） ─── */
+    .tana{padding:0 clamp(1.2rem,4vw,3rem) clamp(4rem,7vw,6rem)}
+    .tana-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));
+      gap:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3vw,2.5rem);
+    }
+    .dougu{
+      display:flex;flex-direction:column;
+      position:relative;
+    }
+    .dougu-frame{
+      aspect-ratio:4/5;
+      background:var(--washi);
+      border:1px solid rgba(26,23,20,.18);
+      position:relative;
+      overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .dougu-frame::after{
+      content:"";position:absolute;inset:0;
+      background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='g'><feTurbulence baseFrequency='1.2' numOctaves='1'/><feColorMatrix values='0 0 0 0 0.55  0 0 0 0 0.45  0 0 0 0 0.32  0 0 0 0.15 0'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
+      mix-blend-mode:multiply;
+      opacity:.65;
+      pointer-events:none;
+    }
+    /* SVG product illustrations */
+    .dougu svg.utsuwa{width:65%;height:auto}
+    .dougu-cap{
+      padding:1.2rem 0 0;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:.4rem 1rem;
+    }
+    .dougu-cap h3{
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:1.15rem;
+      letter-spacing:.15em;
+      line-height:1.4;
+    }
+    .dougu-cap h3 small{
+      display:block;
+      font-size:.6em;
+      letter-spacing:.3em;
+      color:var(--sabi);
+      font-weight:400;
+      margin-top:.5em;
+    }
+    .dougu-cap .price{
+      font-family:var(--font-mei);
+      font-weight:500;
+      font-size:.95rem;
+      letter-spacing:.1em;
+      color:var(--ai-fukai);
+      align-self:end;
+      white-space:nowrap;
+    }
+    .dougu-cap .price small{font-size:.75em;color:var(--hai);margin-right:.2em}
+    .dougu-cap p{
+      grid-column:1/-1;
+      font-size:.85rem;
+      color:var(--hai);
+      line-height:1.8;
+      letter-spacing:.05em;
+    }
+    .dougu .tag{
+      position:absolute;top:.8rem;left:.8rem;
+      font-family:var(--font-mei);
+      font-size:.7rem;
+      letter-spacing:.3em;
+      padding:.3em .9em;
+      background:var(--shu);
+      color:var(--kinari);
+      z-index:3;
+    }
+    .dougu .tag.sumi{background:var(--sumi)}
+    .dougu .tag.ai{background:var(--ai)}
+
+    /* ─── 作り手 ─── */
+    .tsukurite{
+      padding:0 clamp(1.2rem,4vw,3rem) clamp(4rem,7vw,6rem);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:clamp(2rem,4vw,3rem);
+    }
+    @media(min-width:780px){
+      .tsukurite{grid-template-columns:repeat(3,1fr)}
+    }
+    .hito{
+      padding:clamp(1.5rem,2.5vw,2rem);
+      background:rgba(243,236,220,.6);
+      border:1px solid rgba(26,23,20,.16);
+      position:relative;
+    }
+    .hito::before{
+      content:"";
+      position:absolute;
+      top:-1px;left:-1px;
+      width:2.2rem;height:2.2rem;
+      background:var(--ai-fukai);
+    }
+    .hito-no{
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.4em;
+      color:var(--sabi);
+      margin-bottom:.8rem;
+    }
+    .hito h3{
+      font-family:var(--font-mei);
+      font-size:1.4rem;
+      font-weight:700;
+      letter-spacing:.12em;
+      margin-bottom:.3rem;
+    }
+    .hito .yomi{
+      font-family:var(--font-mei);
+      font-size:.78rem;
+      letter-spacing:.3em;
+      color:var(--hai);
+      margin-bottom:1.5rem;
+    }
+    .hito .kobou{
+      font-family:var(--font-mei);
+      font-size:.8rem;
+      letter-spacing:.25em;
+      color:var(--ai-fukai);
+      margin-bottom:1rem;
+      display:inline-block;
+      padding:.3em .8em;
+      border:1px solid var(--ai-fukai);
+    }
+    .hito p{
+      font-size:.85rem;
+      line-height:1.95;
+      color:var(--sumi);
+      opacity:.85;
+    }
+
+    /* ─── 読みもの ─── */
+    .yomimono{
+      padding:0 clamp(1.2rem,4vw,3rem) clamp(4rem,7vw,6rem);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:clamp(2rem,4vw,3rem);
+    }
+    @media(min-width:780px){.yomimono{grid-template-columns:repeat(2,1fr)}}
+    .article{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:1.5rem;
+      align-items:start;
+      padding-bottom:2rem;
+      border-bottom:1px solid rgba(26,23,20,.14);
+    }
+    .article-no{
+      font-family:var(--font-mei);
+      writing-mode:vertical-rl;
+      font-weight:700;
+      font-size:1.3rem;
+      letter-spacing:.4em;
+      color:var(--shu);
+      padding:.3em .4em;
+      border:1px solid var(--shu);
+      align-self:start;
+    }
+    .article h3{
+      font-family:var(--font-mei);
+      font-size:1.2rem;
+      font-weight:700;
+      letter-spacing:.1em;
+      line-height:1.6;
+      margin-bottom:.6rem;
+    }
+    .article .date{
+      font-family:var(--font-mei);
+      font-size:.75rem;
+      letter-spacing:.3em;
+      color:var(--hai);
+      margin-bottom:.8rem;
+    }
+    .article p{font-size:.85rem;line-height:1.9;color:var(--sumi);opacity:.85}
+
+    /* ─── 信条 ─── */
+    .shinjou{
+      padding:clamp(3rem,6vw,5rem) clamp(1.2rem,4vw,3rem) clamp(4rem,7vw,6rem);
+      background:var(--ai-fukai);
+      color:var(--kinari);
+      position:relative;
+      overflow:hidden;
+    }
+    .shinjou::before{
+      content:"";position:absolute;inset:0;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.9  0 0 0 0 0.85  0 0 0 0 0.7  0 0 0 0.06 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      pointer-events:none;
+    }
+    .shinjou .shou{padding:0 0 2rem;border:none;color:var(--kinari)}
+    .shinjou .shou .no{color:var(--shu)}
+    .shinjou .shou h2{color:var(--kinari)}
+    .shinjou .shou h2 small{color:var(--washi);opacity:.7}
+    .shinjou-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));
+      gap:2rem;
+      max-width:1100px;
+      position:relative;
+    }
+    .jou{position:relative;padding-left:2.5rem}
+    .jou .num{
+      position:absolute;left:0;top:-.2em;
+      font-family:var(--font-mei);
+      font-weight:800;
+      font-size:1.6rem;
+      color:var(--shu);
+      line-height:1;
+    }
+    .jou h4{
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:1.05rem;
+      letter-spacing:.12em;
+      margin-bottom:.8rem;
+      color:var(--kinari);
+    }
+    .jou p{font-size:.85rem;line-height:1.95;color:var(--washi);opacity:.85}
+
+    /* ─── 訪う ─── */
+    .otonau{
+      padding:clamp(4rem,7vw,6rem) clamp(1.2rem,4vw,3rem);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:clamp(2rem,4vw,3rem);
+      align-items:start;
+    }
+    @media(min-width:780px){.otonau{grid-template-columns:1fr 1fr}}
+    .mise-info{
+      font-family:var(--font-mei);
+    }
+    .mise-info h2{
+      font-weight:700;
+      font-size:clamp(2rem,4vw,2.8rem);
+      letter-spacing:.18em;
+      line-height:1.3;
+      margin-bottom:.4em;
+    }
+    .mise-info h2 small{display:block;font-size:.35em;letter-spacing:.5em;color:var(--sabi);margin-top:.8em;font-weight:500}
+    .mise-info dl{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:1rem 1.5rem;
+      margin-top:2rem;
+      font-size:.9rem;
+      letter-spacing:.1em;
+    }
+    .mise-info dt{
+      color:var(--sabi);
+      letter-spacing:.3em;
+      white-space:nowrap;
+      border-right:1px solid var(--sabi);
+      padding-right:1.2rem;
+      font-size:.8rem;
+    }
+    .mise-info dd{line-height:1.8}
+    .mise-card{
+      background:var(--washi);
+      border:1px solid rgba(26,23,20,.18);
+      padding:clamp(1.8rem,3vw,2.8rem);
+      position:relative;
+    }
+    .mise-card::before{
+      content:"民藝";
+      position:absolute;
+      top:-.7em;left:1.5em;
+      background:var(--kinari);
+      font-family:var(--font-mei);
+      font-weight:700;
+      font-size:.9rem;
+      letter-spacing:.4em;
+      padding:0 .8em;
+      color:var(--shu);
+    }
+    .mise-card .stamp{
+      position:absolute;
+      top:1.5rem;right:1.5rem;
+      width:4rem;height:4rem;
+      border:2px solid var(--shu);
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-family:var(--font-mei);
+      font-weight:800;
+      font-size:.95rem;
+      color:var(--shu);
+      letter-spacing:.05em;
+      transform:rotate(-8deg);
+      writing-mode:vertical-rl;
+      line-height:1.2;
+    }
+    .mise-card p{
+      font-family:var(--font-mei);
+      font-size:.9rem;
+      line-height:2;
+      letter-spacing:.08em;
+    }
+    .mise-card p + p{margin-top:1rem}
+
+    /* ─── フッター ─── */
+    footer{
+      padding:clamp(3rem,5vw,4rem) clamp(1.2rem,4vw,3rem) 2rem;
+      border-top:1px solid rgba(26,23,20,.14);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:2rem;
+    }
+    @media(min-width:780px){footer{grid-template-columns:1fr auto;align-items:end}}
+    footer .brand{font-size:1.1rem}
+    footer .links{
+      display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem;
+      font-family:var(--font-mei);font-size:.78rem;letter-spacing:.3em;color:var(--hai);
+    }
+    footer .copyr{
+      grid-column:1/-1;
+      font-family:var(--font-mei);
+      font-size:.7rem;
+      letter-spacing:.4em;
+      color:var(--hai);
+      padding-top:1.5rem;
+      border-top:1px dashed rgba(26,23,20,.18);
+    }
+
+    /* アニメーション */
+    @keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    .reveal{animation:fadeup 1.2s cubic-bezier(.2,.7,.2,1) both}
+    .delay-1{animation-delay:.15s}
+    .delay-2{animation-delay:.3s}
+    .delay-3{animation-delay:.45s}
+    .delay-4{animation-delay:.6s}
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:0!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="../" aria-label="土と糸 ホーム">
+    土と糸
+    <small>TSUCHI to ITO</small>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="#tana">道具</a></li>
+      <li><a href="#tsukurite">作り手</a></li>
+      <li><a href="#shinjou">信条</a></li>
+      <li><a href="#otonau">店</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-tate reveal">
+      <span>　手</span>
+      <span>　が</span>
+      <span>　憶</span>
+      <span>　え</span>
+      <span>　る</span>
+      <span class="mark">　道</span>
+      <span class="mark">　具</span>
+      <span>　を</span>
+    </div>
+    <div class="hero-body">
+      <h1 class="reveal delay-1">
+        <span class="accent">用</span>の<span class="accent">美</span>を、<br>
+        いまの日々に。
+        <span class="small-en">UTSUWA · NUNO · KIJI ── MINGEI SUNDRIES</span>
+      </h1>
+      <p class="reveal delay-2">
+        小鹿田の壺、紬の端布、桐の小箱。<br>
+        無名の作り手が、無心に拵えた道具ばかりを集めています。日用の中にこそ、最も健やかな美しさが宿る。柳宗悦の言葉を、私たちは古道具の手触りで確かめてきました。直しながら、長く使う。それが暮らしの底にある豊かさだと信じています。
+      </p>
+      <div class="hero-meta reveal delay-3">
+        <span>創業<b>令和三年 春</b></span>
+        <span>取扱<b>古道具 ・ 民藝 ・ 古布</b></span>
+        <span>所在<b>岡山 ・ 倉敷</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <blockquote>
+      用と美が結ばれるところに、本当の工藝の世界は約束される
+    </blockquote>
+    <cite>柳宗悦『工藝の道』より</cite>
+  </section>
+
+  <section id="tana">
+    <div class="shou">
+      <div class="no">壹</div>
+      <h2>
+        道具棚
+        <small>UTSUWA TANA ─ AUGUST</small>
+      </h2>
+    </div>
+    <div class="tana tana-grid">
+      <!-- 1 -->
+      <article class="dougu reveal">
+        <span class="tag sumi">入荷</span>
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 200 240" aria-hidden="true">
+            <defs>
+              <radialGradient id="g1" cx=".4" cy=".3"><stop offset="0" stop-color="#7a4a2d"/><stop offset="1" stop-color="#3a2515"/></radialGradient>
+            </defs>
+            <ellipse cx="100" cy="200" rx="78" ry="14" fill="rgba(26,23,20,.18)"/>
+            <path d="M40 100 Q40 60 100 55 Q160 60 160 100 L150 210 Q100 230 50 210 Z" fill="url(#g1)"/>
+            <path d="M40 100 Q40 60 100 55 Q160 60 160 100" fill="none" stroke="#1a1714" stroke-width="1" opacity=".4"/>
+            <ellipse cx="100" cy="58" rx="60" ry="10" fill="#1a1714" opacity=".55"/>
+            <path d="M60 130 Q100 145 140 130" stroke="#f3ecdc" stroke-width=".8" fill="none" opacity=".25"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>小鹿田焼 飛び鉋八寸鉢<small>ONTAYAKI · TOBI-KANNA</small></h3>
+          <span class="price"><small>¥</small>14,300</span>
+          <p>大分・小鹿田。坂本工窯のもの。煮物にも汁物にも、毎日使える径。</p>
+        </div>
+      </article>
+      <!-- 2 -->
+      <article class="dougu reveal delay-1">
+        <span class="tag ai">藍</span>
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 220 240" aria-hidden="true">
+            <rect x="20" y="30" width="180" height="180" fill="#1d3a5f"/>
+            <g opacity=".4" fill="#f3ecdc">
+              <circle cx="60" cy="70" r="6"/><circle cx="110" cy="80" r="4"/><circle cx="170" cy="65" r="5"/>
+              <circle cx="80" cy="130" r="3"/><circle cx="140" cy="140" r="6"/><circle cx="60" cy="180" r="5"/>
+              <circle cx="120" cy="190" r="4"/><circle cx="170" cy="170" r="6"/>
+              <path d="M40 110 Q80 95 130 115 T200 110" stroke="#f3ecdc" stroke-width="2" fill="none" opacity=".5"/>
+              <path d="M30 155 Q70 140 120 160 T200 155" stroke="#f3ecdc" stroke-width="2" fill="none" opacity=".5"/>
+            </g>
+            <rect x="20" y="30" width="180" height="180" fill="none" stroke="#0f2238" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>阿波藍 型染め木綿風呂敷<small>AWA-AI · KATAZOME</small></h3>
+          <span class="price"><small>¥</small>8,800</span>
+          <p>徳島・佐藤さん絞り。三尺寸。経年で深まる藍の色。</p>
+        </div>
+      </article>
+      <!-- 3 -->
+      <article class="dougu reveal delay-2">
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 220 260" aria-hidden="true">
+            <rect x="40" y="60" width="140" height="170" rx="4" fill="#7a4a2d"/>
+            <rect x="40" y="60" width="140" height="170" rx="4" fill="none" stroke="#3a2515" stroke-width="2"/>
+            <line x1="40" y1="145" x2="180" y2="145" stroke="#3a2515" stroke-width="1.5"/>
+            <line x1="110" y1="60" x2="110" y2="230" stroke="#3a2515" stroke-width="1.5"/>
+            <circle cx="65" cy="100" r="4" fill="#1a1714"/>
+            <circle cx="155" cy="100" r="4" fill="#1a1714"/>
+            <circle cx="65" cy="190" r="4" fill="#1a1714"/>
+            <circle cx="155" cy="190" r="4" fill="#1a1714"/>
+            <rect x="55" y="38" width="110" height="24" fill="#5a3a22"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>桐の薬箪笥 四つ抽<small>KIRI · KUSURI-DANSU</small></h3>
+          <span class="price"><small>¥</small>38,000</span>
+          <p>明治末期。岩手のものと思しい。手書きの薬名が遺る。</p>
+        </div>
+      </article>
+      <!-- 4 -->
+      <article class="dougu reveal delay-3">
+        <span class="tag">逸品</span>
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 220 240" aria-hidden="true">
+            <ellipse cx="110" cy="210" rx="70" ry="10" fill="rgba(26,23,20,.2)"/>
+            <path d="M50 150 Q50 80 110 75 Q170 80 170 150 Q170 210 110 215 Q50 210 50 150 Z" fill="#f3ecdc" stroke="#7a4a2d" stroke-width="1.5"/>
+            <path d="M70 145 Q110 165 150 145" stroke="#7a4a2d" stroke-width="1" fill="none" opacity=".5"/>
+            <ellipse cx="110" cy="78" rx="58" ry="8" fill="#7a4a2d" opacity=".4"/>
+            <circle cx="95" cy="120" r="3" fill="#1d3a5f"/>
+            <path d="M90 130 Q100 135 115 132" stroke="#1d3a5f" stroke-width="1.2" fill="none"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>李朝白磁 染付草花文小壺<small>LI-CHO · SOMETSUKE</small></h3>
+          <span class="price"><small>¥</small>52,000</span>
+          <p>十九世紀半ば。底にニュウあるも美しい焼き。書院に。</p>
+        </div>
+      </article>
+      <!-- 5 -->
+      <article class="dougu reveal">
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 220 240" aria-hidden="true">
+            <rect x="40" y="100" width="140" height="100" fill="#a86b48"/>
+            <rect x="35" y="95" width="150" height="14" fill="#7a4a2d"/>
+            <rect x="40" y="115" width="140" height="6" fill="#3a2515"/>
+            <g opacity=".5" stroke="#3a2515" stroke-width="1">
+              <line x1="50" y1="130" x2="170" y2="130"/>
+              <line x1="50" y1="155" x2="170" y2="155"/>
+              <line x1="50" y1="180" x2="170" y2="180"/>
+            </g>
+            <circle cx="110" cy="160" r="5" fill="#1a1714"/>
+            <rect x="105" y="155" width="10" height="3" fill="#1a1714"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>欅 一枚板 文机<small>KEYAKI · FUMIZUKUE</small></h3>
+          <span class="price"><small>¥</small>78,000</span>
+          <p>戦前のもの。鉋目を残し、再仕上げ済。座して書く道具。</p>
+        </div>
+      </article>
+      <!-- 6 -->
+      <article class="dougu reveal delay-1">
+        <span class="tag sumi">古布</span>
+        <div class="dougu-frame">
+          <svg class="utsuwa" viewBox="0 0 220 240" aria-hidden="true">
+            <rect x="30" y="40" width="160" height="160" fill="#5a6b3e"/>
+            <g opacity=".55" stroke="#1a1714" stroke-width=".8" fill="none">
+              <pattern id="asanoha" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M20 0 L20 20 L0 20 M20 20 L40 20 M20 20 L0 40 M20 20 L40 40"/>
+              </pattern>
+              <rect x="30" y="40" width="160" height="160" fill="url(#asanoha)"/>
+            </g>
+            <rect x="30" y="40" width="160" height="160" fill="none" stroke="#3a2515" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="dougu-cap">
+          <h3>麻の葉文様 古布袷<small>ASANOHA · KOFU</small></h3>
+          <span class="price"><small>¥</small>6,600</span>
+          <p>大正期 木綿。継ぎ当てあり。座布団地に。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="tsukurite">
+    <div class="shou">
+      <div class="no">貳</div>
+      <h2>
+        作り手のこと
+        <small>HANDS THAT MAKE</small>
+      </h2>
+    </div>
+    <div class="tsukurite">
+      <article class="hito reveal">
+        <div class="hito-no">作 第 ○○一 番</div>
+        <h3>坂本 茂木</h3>
+        <p class="yomi">さかもと しげき</p>
+        <span class="kobou">小鹿田焼 坂本工窯</span>
+        <p>九代続く窯元の九代目。粘土の蹴轆轤を踏みつづけて五十年。「同じ皿を百枚作る、それが仕事だ」と仰る。当店では飯碗、八寸鉢、湯呑を扱う。</p>
+      </article>
+      <article class="hito reveal delay-1">
+        <div class="hito-no">作 第 ○○二 番</div>
+        <h3>佐藤 千恵</h3>
+        <p class="yomi">さとう ちえ</p>
+        <span class="kobou">徳島 ・ 阿波藍染め</span>
+        <p>祖父の代から続く藍甕を守る。蓼藍の葉から建てる地藍にこだわり、年に一度の藍建ての季節に必ず訪ねている。風呂敷、半襟、手ぬぐい。</p>
+      </article>
+      <article class="hito reveal delay-2">
+        <div class="hito-no">作 第 ○○三 番</div>
+        <h3>奥山 信之</h3>
+        <p class="yomi">おくやま のぶゆき</p>
+        <span class="kobou">岩手 ・ 桐木工</span>
+        <p>桐箪笥職人の三代目。修繕も請ける。古い桐の道具を当店に持ち込むのは、たいてい彼の見立て。底裏の鉋目を見れば、丁寧な仕事ぶりが分かる。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="yomu">
+    <div class="shou">
+      <div class="no">參</div>
+      <h2>
+        読みもの
+        <small>YOMIMONO ─ ESSAYS</small>
+      </h2>
+    </div>
+    <div class="yomimono">
+      <article class="article reveal">
+        <div class="article-no">第〇五話</div>
+        <div>
+          <p class="date">令和六年 ・ 葉月廿日</p>
+          <h3>飛び鉋を、台所で。<br>毎日使う器の選び方</h3>
+          <p>飛び鉋の小鹿田焼が、なぜ料理に映えるのか。粗い土肌が油や醤を含み、いつしか器が育っていく。日々の手入れと、十年使った後の景色について書きました。</p>
+        </div>
+      </article>
+      <article class="article reveal delay-1">
+        <div class="article-no">第〇四話</div>
+        <div>
+          <p class="date">令和六年 ・ 文月七日</p>
+          <h3>藍は呼吸する。<br>阿波の藍建てを訪ねて</h3>
+          <p>「藍は生きものだ」と仰る佐藤さんの工房を、夏のはじめに訪ねました。蓼藍の葉を発酵させる甕の縁で、白い泡が静かに咲く。あの色の源を、こちらに記します。</p>
+        </div>
+      </article>
+      <article class="article reveal delay-2">
+        <div class="article-no">第〇三話</div>
+        <div>
+          <p class="date">令和六年 ・ 水無月十日</p>
+          <h3>古道具を、直して使う。<br>桐箪笥の経年について</h3>
+          <p>桐は呼吸する木。乾く、湿る、を何十年と繰り返した抽斗が、ほんの少し膨らんでいる。慌てて削らず、季節を待つ。古道具との付き合い方を奥山さんに学んでいます。</p>
+        </div>
+      </article>
+      <article class="article reveal delay-3">
+        <div class="article-no">第〇二話</div>
+        <div>
+          <p class="date">令和六年 ・ 皐月廿三日</p>
+          <h3>無名性ということ。<br>柳宗悦の遺した問い</h3>
+          <p>「下手物」を美しいと見抜いた柳宗悦。作家ものではなく、市井の道具にこそ宿る美しさを、私たちの古道具棚に置き換えて考えてみます。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="shinjou" class="shinjou">
+    <div class="shou">
+      <div class="no">肆</div>
+      <h2>
+        店の信条
+        <small>FOUR PRINCIPLES</small>
+      </h2>
+    </div>
+    <div class="shinjou-list">
+      <div class="jou">
+        <div class="num">壹</div>
+        <h4>用に適う美</h4>
+        <p>飾る道具より、使う道具を選ぶ。手に持ったときに「いい」と感じる重みと、毎日使ったあとに育つ景色を信じています。</p>
+      </div>
+      <div class="jou">
+        <div class="num">貳</div>
+        <h4>無名の手</h4>
+        <p>銘の有無で価値は決まらない。市井の作り手が無心に拵えたものこそ、私たちが取り扱うべき道具だと考えます。</p>
+      </div>
+      <div class="jou">
+        <div class="num">參</div>
+        <h4>直して使う</h4>
+        <p>欠けた、軋んだ、汚れた——それは終わりではなく、続きの始まり。金継ぎ、桐の修繕、藍の染め直し。続けるための仕事を受けます。</p>
+      </div>
+      <div class="jou">
+        <div class="num">肆</div>
+        <h4>急がぬ商い</h4>
+        <p>仕入れも、お渡しも、急ぎません。買い手の方に、何度でも見にきていただきたい。買わずに帰る日があっても構わない店です。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="otonau" class="otonau">
+    <div class="mise-info">
+      <h2>
+        店に訪うひと<small>OTONAU ─ VISIT</small>
+      </h2>
+      <p style="margin-top:1.5rem;font-size:.95rem;line-height:2;letter-spacing:.06em;">
+        倉敷美観地区の路地裏。元は呉服商の蔵を改装した、二十坪ほどの古道具屋です。お電話でのお取り置き、地方発送どちらも承ります。月に一度、信州や山陰の道具市にも参じております。
+      </p>
+      <dl>
+        <dt>店主</dt><dd>林 美咲（はやし みさき）</dd>
+        <dt>住所</dt><dd>岡山県倉敷市本町 七 ─ 三 二</dd>
+        <dt>電話</dt><dd>○八六─四二二─×××○</dd>
+        <dt>営業</dt><dd>金 ・ 土 ・ 日 / 十一時 ─ 十八時</dd>
+        <dt>定休</dt><dd>月 ・ 火 ・ 水 ・ 木</dd>
+      </dl>
+    </div>
+    <div class="mise-card">
+      <div class="stamp">林印</div>
+      <p>古道具は、買い手が選ぶ前に、道具のほうが買い手を選ぶことがあります。</p>
+      <p>急がず、迷い、そして手に取ってみてください。私たちの店は、そのための場所です。お茶を一服差し上げますので、どうぞお気軽に。</p>
+      <p style="margin-top:2rem;font-family:var(--font-mei);font-size:.78rem;letter-spacing:.4em;color:var(--sabi);">— 店主 林 美咲</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>
+    <a class="brand" href="../">
+      土と糸
+      <small>TSUCHI to ITO</small>
+    </a>
+  </div>
+  <ul class="links" style="list-style:none">
+    <li>道具棚</li>
+    <li>作り手</li>
+    <li>読みもの</li>
+    <li>店の案内</li>
+    <li>古道具買取</li>
+  </ul>
+  <div class="copyr">© 令和六年 土と糸 ・ TSUCHI TO ITO ─ 民藝デザイン研究のための架空店舗です</div>
+</footer>
+
+<script>
+  // 軽い手書き感のためのIntersection
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.style.animationPlayState='running';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>{
+    el.style.animationPlayState='paused';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
